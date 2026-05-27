@@ -1,5 +1,10 @@
 # LOGBOOK — bitacora
 
+## 2026-05-27 15:17 — Merge a la rama main
+done: fusionada la rama dev en main con los últimos cambios de documentación | files: docs/dev/LOGBOOK.md | branch: main | blocker: ninguno | next: esperar instrucciones del usuario
+
+---
+
 ## 2026-05-27 15:16 — Actualización de README.md
 done: añadida sección "How installation works" al README.md explicando el funcionamiento de npx y los archivos base | files: README.md, docs/dev/LOGBOOK.md | branch: dev | blocker: ninguno | next: esperar instrucciones del usuario
 
