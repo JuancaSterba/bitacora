@@ -1,5 +1,10 @@
 # LOGBOOK — bitacora
 
+## 2026-05-27 16:35 — Modo A de solo lectura
+done: actualizados archivos de configuración y reglas (SKILL.md, CLAUDE.md, AGENTS.md, GEMINI.md, .windsurfrules, .cursor/rules/bitacora.mdc) para que el modo de resumen (Mode A) sea estrictamente de solo lectura | files: SKILL.md, CLAUDE.md, AGENTS.md, GEMINI.md, .windsurfrules, .cursor/rules/bitacora.mdc, docs/dev/LOGBOOK.md | branch: dev | blocker: ninguno | next: esperar instrucciones del usuario
+
+---
+
 ## 2026-05-27 16:25 — Resolución de conflicto de merge
 done: resuelto el conflicto en docs/dev/LOGBOOK.md al traer los cambios de la rama main a dev | files: docs/dev/LOGBOOK.md | branch: dev | blocker: ninguno | next: esperar instrucciones del usuario
 

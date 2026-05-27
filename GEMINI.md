@@ -25,7 +25,7 @@ git checkout [branch] — ¿Continuamos con TASK-[N]?
 
 ## Active Phases
 
-**P1 — LOGBOOK · every prompt, no exceptions**  
+**P1 — LOGBOOK · every Mode B prompt only, never on Mode A**  
 Append to `LOGBOOK.md`:
 ```
 ## [YYYY-MM-DD HH:MM] — [action]
@@ -63,7 +63,8 @@ Ask: "¿Qué agentes usás? Puedo crear GEMINI.md / AGENTS.md / .cursor/rules/bi
 ---
 
 ## Rules
-- P1 on every prompt — no exceptions
+- P1 on every Mode B prompt only (never on Mode A)
+- MODE A is strictly read-only. No file writes. No git commands. No commits.
 - Always run `git add` and `git commit` after updating the bitacora (`docs/dev/`)
 - No branch off main without user confirmation
 - Never Done without all criteria + test plan executed
