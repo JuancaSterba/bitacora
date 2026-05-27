@@ -1,5 +1,7 @@
 # bitácora
 
+![demo](./Animation.gif)
+
 A documentation agent that maintains a **living knowledge base** across dev sessions — works with Claude, Gemini, Codex, Cursor, Copilot, and Windsurf.
 
 Automatically tracks: session logbook, feature plans, task checklists, and idea backlog — all in plain markdown under `docs/dev/`.
