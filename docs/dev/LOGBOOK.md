@@ -1,5 +1,10 @@
 # LOGBOOK — bitacora
 
+## 2026-05-27 15:18 — Push a GitHub
+done: pusheados los últimos cambios y merge a la rama main en GitHub | files: docs/dev/LOGBOOK.md | branch: main | blocker: ninguno | next: esperar instrucciones del usuario
+
+---
+
 ## 2026-05-27 15:17 — Merge a la rama main
 done: fusionada la rama dev en main con los últimos cambios de documentación | files: docs/dev/LOGBOOK.md | branch: main | blocker: ninguno | next: esperar instrucciones del usuario
 
