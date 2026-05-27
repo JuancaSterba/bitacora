@@ -1,5 +1,10 @@
 # LOGBOOK — bitacora
 
+## 2026-05-27 14:30 — Creación de rama dev
+done: creada la rama dev y switch a ella | files: none | branch: dev | blocker: ninguno | next: registrar nuevas ideas
+
+---
+
 ## 2026-05-27 14:27 — Confirmación de push
 done: repositorio remoto creado y código pusheado por el usuario | files: none | branch: main | blocker: ninguno | next: esperar nuevos requerimientos o features
 
