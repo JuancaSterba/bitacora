@@ -1,5 +1,10 @@
 # LOGBOOK — bitacora
 
+## 2026-05-27 15:15 — Consulta de estado
+done: respondido al usuario sobre dónde quedamos en el desarrollo | files: docs/dev/LOGBOOK.md | branch: dev | blocker: ninguno | next: esperar instrucciones del usuario
+
+---
+
 ## 2026-05-27 14:30 — Creación de rama dev
 done: creada la rama dev y switch a ella | files: none | branch: dev | blocker: ninguno | next: registrar nuevas ideas
 
