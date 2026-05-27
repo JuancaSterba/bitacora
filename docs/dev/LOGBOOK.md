@@ -1,5 +1,10 @@
 # LOGBOOK — bitacora
 
+## 2026-05-27 16:36 — Merge de dev a main y push
+done: fusionada la rama dev en main y pusheados los cambios a GitHub | files: docs/dev/LOGBOOK.md | branch: main | blocker: ninguno | next: esperar instrucciones del usuario
+
+---
+
 ## 2026-05-27 16:35 — Modo A de solo lectura
 done: actualizados archivos de configuración y reglas (SKILL.md, CLAUDE.md, AGENTS.md, GEMINI.md, .windsurfrules, .cursor/rules/bitacora.mdc) para que el modo de resumen (Mode A) sea estrictamente de solo lectura | files: SKILL.md, CLAUDE.md, AGENTS.md, GEMINI.md, .windsurfrules, .cursor/rules/bitacora.mdc, docs/dev/LOGBOOK.md | branch: dev | blocker: ninguno | next: esperar instrucciones del usuario
 
