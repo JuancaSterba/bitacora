@@ -1,6 +1,6 @@
 # bitácora
 
-![demo](./demo.gif)
+![demo](./Animation.gif)
 
 A documentation agent that maintains a **living knowledge base** across dev sessions — works with Claude, Gemini, Codex, Cursor, Copilot, and Windsurf.
 
