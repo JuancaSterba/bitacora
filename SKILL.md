@@ -1,6 +1,6 @@
 ---
 name: bitacora
-description: Use when starting or resuming a dev session needing cross-session docs. Maintains logbook, feature plans, task checklists, and idea backlog in docs/dev/. Triggers: session start, feature kickoff, task request, "donde quedamos", "resume", "continuemos", "qué sigue", "catch me up".
+description: Use when starting or resuming a dev session. Maintains logbook, feature plans, task checklists, and idea backlog in docs/dev/. Triggers on session start, feature kickoff, task request, or resume phrases like donde quedamos or catch me up.
 ---
 
 # Bitácora
