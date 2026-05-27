@@ -69,6 +69,7 @@ Ask: "¿Qué agentes usás? Puedo crear GEMINI.md / AGENTS.md / .cursor/rules/bi
 
 ## Rules
 - P1 on every prompt — no exceptions
+- Always run `git add` and `git commit` after updating the bitacora (`docs/dev/`)
 - No branch off main without user confirmation
 - Never Done without all criteria + test plan executed
 - Never invent file contents — say missing, offer to create

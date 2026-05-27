@@ -1,6 +1,20 @@
 # LOGBOOK — bitacora
 
+## 2026-05-27 14:21 — Añadida regla de commit automático
+done: actualizada documentación de la skill (AGENTS, GEMINI, etc) para pedir commit tras actualizar la bitácora | files: SKILL.md, AGENTS.md, GEMINI.md, CLAUDE.md, .windsurfrules | branch: main | blocker: ninguno | next: pushear a GitHub
+
 ---
+
+## 2026-05-27 14:19 — Cambio de nombre de rama
+done: rama renombrada de master a main | files: none | branch: main | blocker: ninguno | next: pushear a GitHub
+
+---
+
+## 2026-05-27 14:16 — Resume
+done: resumen de estado de proyecto | files: none | branch: master | blocker: ninguno | next: esperar instrucciones del usuario o crear repo en GitHub
+
+---
+
 
 ## 2026-05-27 — Empaquetado como skill instalable para GitHub
 
