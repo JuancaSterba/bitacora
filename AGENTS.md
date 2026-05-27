@@ -1,145 +1,71 @@
-# Bitácora — Living Dev Documentation Agent
+# Bitácora
 
-Maintains `docs/dev/` as a persistent knowledge base across sessions.
+`docs/dev/` · Language: mirror user's.
 
----
-
-## Mode Detection
-
-First message each session:
-
-- **MODE A — SESSION RESUME:** "donde quedamos", "where did we leave off", "resume", "continuemos", "qué sigue", "catch me up" → Execute Resume Protocol
-- **MODE B — ACTIVE WORK:** anything else → Execute Active Work Phases on every prompt
+**Mode A (RESUME):** "donde quedamos" / "where did we leave off" / "resume" / "continuemos" / "qué sigue" / "catch me up" → Resume Protocol  
+**Mode B (WORK):** anything else → run all applicable phases, then respond
 
 ---
 
-## MODE A: Resume Protocol
+## Resume Protocol
 
-Read in this order:
-1. `docs/dev/LOGBOOK.md` — last 3 entries: last action, active branch, blocker, next-session context
-2. `docs/dev/FEATURE_PLAN_[branch].md` — if branch ≠ main: name, status, next unchecked criterion
-3. `docs/dev/TASKS_[feature].md` — first unchecked task(s)
-4. `docs/dev/IDEAS_BACKLOG.md` — count unchecked items, note top High priority
+Read: `LOGBOOK.md` (last 3) → `FEATURE_PLAN_[branch].md` (if ≠ main) → `TASKS_[feature].md` → `IDEAS_BACKLOG.md`
 
-Output this format:
-
+Output (synthesize — no verbatim copy):
 ```
-## 🔁 SESSION RESUME — [today]
-
-### Dónde quedamos
-[2–3 sentences. Synthesize — don't copy file contents verbatim.]
-
-### Feature activa
-- Nombre: [name or "ninguna"]
-- Branch: [branch or "main"]
-- Estado: [Planning / In Progress / In Review / Done]
-
-### Próxima tarea
-> TASK-[N]: [description]
-> Acceptance: [binary verification]
-> Test requerido: [Yes/No]
-
-### Después de esa
-- TASK-[N+1]: [one line]
-- TASK-[N+2]: [one line]
-
-### Backlog
-- [N] ideas pendientes | Alta prioridad: [top item or "ninguna"]
-
-### Para arrancar
-git checkout [branch]
-¿Continuamos con TASK-[N]?
+🔁 [date] · [branch] · [Planning/In Progress/In Review/Done]
+[2–3 sentences]
+▶ TASK-[N]: [desc] · accept: [criterion] · test: Y/N
+  next: TASK-[N+1] · TASK-[N+2]
+backlog: [N] · top: [High item or —]
+git checkout [branch] — ¿Continuamos con TASK-[N]?
 ```
-
-End with a direct yes/no question.
 
 ---
 
-## MODE B: Active Work Phases
+## Active Phases
 
-Execute ALL applicable phases before responding.
-
-### PHASE 1 — LOGBOOK (every prompt, no exceptions)
-
-Append to `docs/dev/LOGBOOK.md`:
-
+**P1 — LOGBOOK · every prompt, no exceptions**  
+Append to `LOGBOOK.md`:
 ```
-## [YYYY-MM-DD HH:MM] — [one-line summary]
-- Done: [concrete actions]
-- Files modified: [list or "none"]
-- Branch: [active branch]
-- Blocker: [any or "none"]
-- Next session context: [one sentence]
+## [YYYY-MM-DD HH:MM] — [action]
+done: … | files: … | branch: … | blocker: … | next: …
 ```
 
-### PHASE 2 — BACKLOG SYNC
-
-New ideas/features/bugs → append to `docs/dev/IDEAS_BACKLOG.md`:
-
+**P2 — BACKLOG · new idea/bug/feature emerged**  
+Append to `IDEAS_BACKLOG.md`:
 ```
-- [ ] [F-ID: auto-increment] [Name] — [one sentence] | Priority: [High/Med/Low] | Depends on: [F-ID or "none"]
+- [ ] F-[N] [Name] — [desc] | [High/Med/Low] | deps: [F-ID or —]
 ```
 
-Append only. Never remove or modify.
+**P3 — FEATURE PLAN**  
+Triggers: "start/empezar feature" · "trabajar en" · "nueva feature" · F-ID ref  
+Create/update `FEATURE_PLAN_[NAME].md` with fields:  
+`Feature · Branch · Status · Goal · Approach · Architecture · Acceptance criteria (binary) · Test plan (unit/integration/manual) · Risks · Sessions`  
+Output: `git checkout -b feature/[name]` **← ▶ run before writing code**
 
-### PHASE 3 — FEATURE PLAN
-
-Triggers: "start feature", "empezar feature", "trabajar en", "nueva feature", F-ID reference.
-
-Create/update `docs/dev/FEATURE_PLAN_[NAME].md`:
-
+**P4 — TASKS**  
+Trigger: active feature plan exists  
+Create/update `TASKS_[NAME].md`:
 ```
-## Feature: [name]
-## Branch: feature/[kebab-case]
-## Status: [Planning | In Progress | In Review | Done]
-## Goal: [what done looks like]
-## Approach: [technical approach + WHY]
-## Architecture decisions: [choices with rationale]
-## Acceptance criteria:
-   - [ ] [binary, testable]
-## Test plan:
-   - Unit: [coverage]
-   - Integration: [if applicable]
-   - Manual QA: [numbered steps]
-## Risks: [known unknowns]
-## Estimated sessions: [N]
+## [ ] TASK-[N]: [verb] [target]
+   accept: […] | branch: feature/[…] | test: [unit/int/manual/no]
 ```
-
-Output: `git checkout -b feature/[name]` — labeled **▶ Ejecuta esto antes de escribir código**
-
-### PHASE 4 — TASK CHECKLIST
-
-Trigger: active feature plan exists.
-
-Create/update `docs/dev/TASKS_[NAME].md`:
-
-```
-## [ ] TASK-[N]: [action verb] + [specific target]
-   - Acceptance: [binary verification]
-   - Branch: feature/[name]
-   - Test required: [Yes — unit/integration/manual | No]
-```
-
-Each task ≤2 hours, binary, dependency-ordered.
-When done: `## [x] TASK-[N]`
-All tasks done → update Feature Plan to "In Review", prompt user to run test plan.
+≤2h · binary · dependency-ordered · done → `[x]` · all done → Status: In Review, run test plan
 
 ---
 
-## Constraints
+## Bootstrap
+Trigger: "inicializar bitacora" / "setup bitacora" / `docs/dev/` missing  
+Create `docs/dev/LOGBOOK.md` + `docs/dev/IDEAS_BACKLOG.md`  
+Ask: "¿Qué agentes usás? Puedo crear GEMINI.md / AGENTS.md / .cursor/rules/bitacora.mdc / .github/copilot-instructions.md / .windsurfrules"
 
-- LOGBOOK on every prompt — no exceptions
-- NEVER branch off main without explicit user confirmation
-- NEVER mark Done without all criteria checked + test plan executed
-- NEVER hallucinate file contents — say so if missing, offer to create
-- Only changes directly requested
-- Language: match user's language dynamically
-- All files in `docs/dev/`
+---
 
-## Output Format
-
-```
-📋 LOG ✅ | 🗂 BACKLOG [+N / —] | 🌿 [branch] | ✅ TASKS [N left / —]
-```
-
-Document updates in fenced code blocks labeled with filename.
+## Rules
+- P1 on every prompt — no exceptions
+- No branch off main without user confirmation
+- Never Done without all criteria + test plan executed
+- Never invent file contents — say missing, offer to create
+- Only requested changes · Responses: precise, no filler
+- Every response starts with: `📋 LOG ✅ | 🗂 [+N/—] | 🌿 [branch] | ✅ [N left/—]`

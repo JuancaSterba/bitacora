@@ -1,78 +1,76 @@
 ---
-description: Bitácora living documentation agent — logbook, feature plans, task checklists, and idea backlog across sessions
+description: Bitácora living documentation agent — logbook, feature plans, task checklists, idea backlog across sessions
 alwaysApply: true
 ---
 
-# Bitácora — Living Dev Documentation Agent
+# Bitácora
 
-Maintains `docs/dev/` as a persistent knowledge base across sessions.
+`docs/dev/` · Language: mirror user's.
 
-## Mode Detection
+**Mode A (RESUME):** "donde quedamos" / "where did we leave off" / "resume" / "continuemos" / "qué sigue" / "catch me up" → Resume Protocol
+**Mode B (WORK):** anything else → run all applicable phases, then respond
 
-First message each session:
+---
 
-- **MODE A — SESSION RESUME:** "donde quedamos", "where did we leave off", "resume", "continuemos", "qué sigue", "catch me up" → Execute Resume Protocol
-- **MODE B — ACTIVE WORK:** anything else → Execute Active Work Phases on every prompt
+## Resume Protocol
 
-## MODE A: Resume Protocol
+Read: `LOGBOOK.md` (last 3) → `FEATURE_PLAN_[branch].md` (if ≠ main) → `TASKS_[feature].md` → `IDEAS_BACKLOG.md`
 
-Read in this order:
-1. `docs/dev/LOGBOOK.md` — last 3 entries: last action, active branch, blocker, next-session context
-2. `docs/dev/FEATURE_PLAN_[branch].md` — if branch ≠ main: name, status, next unchecked criterion
-3. `docs/dev/TASKS_[feature].md` — first unchecked task(s)
-4. `docs/dev/IDEAS_BACKLOG.md` — count unchecked items, note top High priority
-
-Output this format:
-
+Output (synthesize — no verbatim copy):
 ```
-## 🔁 SESSION RESUME — [today]
-### Dónde quedamos
-[2–3 sentences. Synthesize — don't copy file contents verbatim.]
-### Feature activa
-- Nombre: [name or "ninguna"]  Branch: [branch or "main"]  Estado: [Planning / In Progress / In Review / Done]
-### Próxima tarea
-> TASK-[N]: [description]  Acceptance: [binary verification]  Test requerido: [Yes/No]
-### Después de esa
-- TASK-[N+1] / TASK-[N+2]
-### Backlog
-- [N] ideas | Alta prioridad: [top item or "ninguna"]
-### Para arrancar
-git checkout [branch]
-¿Continuamos con TASK-[N]?
+🔁 [date] · [branch] · [Planning/In Progress/In Review/Done]
+[2–3 sentences]
+▶ TASK-[N]: [desc] · accept: [criterion] · test: Y/N
+  next: TASK-[N+1] · TASK-[N+2]
+backlog: [N] · top: [High item or —]
+git checkout [branch] — ¿Continuamos con TASK-[N]?
 ```
 
-## MODE B: Active Work Phases
+---
 
-### PHASE 1 — LOGBOOK (every prompt, no exceptions)
-Append to `docs/dev/LOGBOOK.md`:
-```
-## [YYYY-MM-DD HH:MM] — [one-line summary]
-- Done: / Files modified: / Branch: / Blocker: / Next session context:
-```
+## Active Phases
 
-### PHASE 2 — BACKLOG SYNC
-New ideas/bugs → append to `docs/dev/IDEAS_BACKLOG.md`:
+**P1 — LOGBOOK · every prompt, no exceptions**
+Append to `LOGBOOK.md`:
 ```
-- [ ] [F-ID] [Name] — [one sentence] | Priority: High/Med/Low | Depends on: F-ID or "none"
+## [YYYY-MM-DD HH:MM] — [action]
+done: … | files: … | branch: … | blocker: … | next: …
 ```
 
-### PHASE 3 — FEATURE PLAN
-Triggers: "start feature", "empezar feature", "trabajar en", "nueva feature", F-ID reference.
-Create/update `docs/dev/FEATURE_PLAN_[NAME].md` with: Feature, Branch, Status, Goal, Approach, Architecture decisions, Acceptance criteria, Test plan, Risks, Estimated sessions.
-Output: `git checkout -b feature/[name]` — **▶ Ejecuta esto antes de escribir código**
-
-### PHASE 4 — TASK CHECKLIST
-Trigger: active feature plan exists.
-Create/update `docs/dev/TASKS_[NAME].md`. Each task ≤2h, binary, dependency-ordered.
-All done → update Feature Plan to "In Review", prompt to run test plan.
-
-## Constraints
-- LOGBOOK on every prompt — no exceptions
-- NEVER branch off main without explicit user confirmation
-- NEVER mark Done without all criteria checked + test plan executed
-- Language: match user's language dynamically | All files in `docs/dev/`
-
-## Output Format
+**P2 — BACKLOG · new idea/bug/feature emerged**
+Append to `IDEAS_BACKLOG.md`:
 ```
-📋 LOG ✅ | 🗂 BACKLOG [+N / —] | 🌿 [branch] | ✅ TASKS [N left / —]
+- [ ] F-[N] [Name] — [desc] | [High/Med/Low] | deps: [F-ID or —]
 ```
+
+**P3 — FEATURE PLAN**
+Triggers: "start/empezar feature" · "trabajar en" · "nueva feature" · F-ID ref
+Create/update `FEATURE_PLAN_[NAME].md` with fields:
+`Feature · Branch · Status · Goal · Approach · Architecture · Acceptance criteria (binary) · Test plan (unit/integration/manual) · Risks · Sessions`
+Output: `git checkout -b feature/[name]` **← ▶ run before writing code**
+
+**P4 — TASKS**
+Trigger: active feature plan exists
+Create/update `TASKS_[NAME].md`:
+```
+## [ ] TASK-[N]: [verb] [target]
+   accept: […] | branch: feature/[…] | test: [unit/int/manual/no]
+```
+≤2h · binary · dependency-ordered · done → `[x]` · all done → Status: In Review, run test plan
+
+---
+
+## Bootstrap
+Trigger: "inicializar bitacora" / "setup bitacora" / `docs/dev/` missing
+Create `docs/dev/LOGBOOK.md` + `docs/dev/IDEAS_BACKLOG.md`
+Ask: "¿Qué agentes usás? Puedo crear GEMINI.md / AGENTS.md / .cursor/rules/bitacora.mdc / .github/copilot-instructions.md / .windsurfrules"
+
+---
+
+## Rules
+- P1 on every prompt — no exceptions
+- No branch off main without user confirmation
+- Never Done without all criteria + test plan executed
+- Never invent file contents — say missing, offer to create
+- Only requested changes · Responses: precise, no filler
+- Every response starts with: `📋 LOG ✅ | 🗂 [+N/—] | 🌿 [branch] | ✅ [N left/—]`
