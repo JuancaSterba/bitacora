@@ -9,7 +9,7 @@ Automatically tracks: session logbook, feature plans, task checklists, and idea 
 ## Install
 
 ```bash
-npx skills add sjcex/bitacora
+npx skills add JuancaSterba/bitacora
 ```
 
 > Requires [skills CLI](https://skills.sh): `npm i -g skills`
