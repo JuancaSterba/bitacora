@@ -1,6 +1,6 @@
 # bitácora
 
-A Claude Code skill that maintains a **living documentation system** across dev sessions.
+A documentation agent that maintains a **living knowledge base** across dev sessions — works with Claude, Gemini, Codex, Cursor, Copilot, and Windsurf.
 
 Automatically tracks: session logbook, feature plans, task checklists, and idea backlog — all in plain markdown under `docs/dev/`.
 
@@ -8,24 +8,41 @@ Automatically tracks: session logbook, feature plans, task checklists, and idea 
 
 ## Install
 
+### Claude Code (via skills CLI)
 ```bash
 npx skills add JuancaSterba/bitacora
 ```
 
-> Requires [skills CLI](https://skills.sh): `npm i -g skills`
+### Claude Code (manual)
+Copy `CLAUDE.md` to your project root.
+
+### Gemini CLI
+Copy `GEMINI.md` to your project root.
+
+### OpenAI Codex / Agents
+Copy `AGENTS.md` to your project root.
+
+### Cursor
+Copy `.cursor/rules/bitacora.mdc` to your project's `.cursor/rules/` directory.
+
+### GitHub Copilot
+Copy `.github/copilot-instructions.md` to your project's `.github/` directory.
+
+### Windsurf
+Copy `.windsurfrules` to your project root.
 
 ---
 
 ## What it does
 
-Every time you work with Claude, bitácora:
+Every time you work with your AI agent, bitácora:
 
-- **Logs** what was done, what was changed, and what's next — in `docs/dev/LOGBOOK.md`
-- **Tracks ideas** and backlog items that come up — in `docs/dev/IDEAS_BACKLOG.md`
-- **Plans features** with acceptance criteria and test plans — in `docs/dev/FEATURE_PLAN_*.md`
-- **Breaks features into tasks** with binary done/not-done state — in `docs/dev/TASKS_*.md`
+- **Logs** what was done, what was changed, and what's next → `docs/dev/LOGBOOK.md`
+- **Tracks ideas** and backlog items that come up → `docs/dev/IDEAS_BACKLOG.md`
+- **Plans features** with acceptance criteria and test plans → `docs/dev/FEATURE_PLAN_*.md`
+- **Breaks features into tasks** with binary done/not-done state → `docs/dev/TASKS_*.md`
 
-At the start of any session, just say **"donde quedamos"** and Claude will reconstruct exactly where you left off.
+At the start of any session, just say **"donde quedamos"** and the agent reconstructs exactly where you left off.
 
 ---
 
@@ -39,7 +56,7 @@ qué sigue
 catch me up
 ```
 
-Claude reads the last logbook entries, active feature plan, and pending tasks, then outputs a structured brief and asks if you want to continue.
+The agent reads the last logbook entries, active feature plan, and pending tasks, then outputs a structured brief and asks if you want to continue.
 
 ---
 
@@ -74,6 +91,20 @@ docs/dev/
   FEATURE_PLAN_[name].md
   TASKS_[name].md
 ```
+
+---
+
+## Agent compatibility
+
+| Agent | File |
+|---|---|
+| Claude Code (skills) | `SKILL.md` via `npx skills add` |
+| Claude Code (manual) | `CLAUDE.md` |
+| Gemini CLI | `GEMINI.md` |
+| OpenAI Codex / Agents | `AGENTS.md` |
+| Cursor | `.cursor/rules/bitacora.mdc` |
+| GitHub Copilot | `.github/copilot-instructions.md` |
+| Windsurf | `.windsurfrules` |
 
 ---
 

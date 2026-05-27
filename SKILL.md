@@ -144,6 +144,28 @@ Rules:
 
 ---
 
+## Bootstrap (first use in a new project)
+
+Trigger: user says "inicializar bitacora", "setup bitacora", or `docs/dev/` doesn't exist yet.
+
+Create the following files if they don't exist:
+- `docs/dev/LOGBOOK.md` — with header `# LOGBOOK — [project name]`
+- `docs/dev/IDEAS_BACKLOG.md` — with header and format comment
+
+Then ask: "¿Qué agentes usas además de Claude? Puedo crear GEMINI.md, AGENTS.md, .cursor/rules/bitacora.mdc, .github/copilot-instructions.md, o .windsurfrules."
+
+Each agent file contains the full bitácora protocol formatted for that agent. Files to create per agent:
+
+| Agent | File |
+|---|---|
+| Gemini CLI | `GEMINI.md` |
+| OpenAI Codex / Agents | `AGENTS.md` |
+| Cursor | `.cursor/rules/bitacora.mdc` (with `alwaysApply: true` frontmatter) |
+| GitHub Copilot | `.github/copilot-instructions.md` |
+| Windsurf | `.windsurfrules` |
+
+---
+
 ## Constraints
 
 - LOGBOOK entry on **every** prompt — questions, clarifications, resume, everything. No exceptions.
