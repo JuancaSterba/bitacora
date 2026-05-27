@@ -1,5 +1,10 @@
 # LOGBOOK — bitacora
 
+## 2026-05-27 14:23 — Confirmación de versionado
+done: confirmación con el usuario del versionado para cada tarea completada | files: none | branch: main | blocker: ninguno | next: esperar instrucciones del usuario
+
+---
+
 ## 2026-05-27 14:21 — Añadida regla de commit automático
 done: actualizada documentación de la skill (AGENTS, GEMINI, etc) para pedir commit tras actualizar la bitácora | files: SKILL.md, AGENTS.md, GEMINI.md, CLAUDE.md, .windsurfrules | branch: main | blocker: ninguno | next: pushear a GitHub
 
