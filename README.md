@@ -33,6 +33,15 @@ Copy `.windsurfrules` to your project root.
 
 ---
 
+## How installation works
+
+- `npx skills add JuancaSterba/bitacora` installs into `.agents/skills/bitacora/` — this is the skills registry entry, managed automatically.
+- The files in the project root (`CLAUDE.md`, `GEMINI.md`, `AGENTS.md`, `.windsurfrules`, `.cursor/rules/`) are for manual installation — copy only the one that matches your agent.
+- Both methods work. If you used `npx skills add`, you do not need to copy anything manually.
+- If you see both in your project, that is normal — the agent reads from the root files, the skills CLI reads from `.agents/`.
+
+---
+
 ## What it does
 
 Every time you work with your AI agent, bitácora:
