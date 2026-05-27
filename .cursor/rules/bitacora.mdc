@@ -72,5 +72,6 @@ Ask: "¿Qué agentes usás? Puedo crear GEMINI.md / AGENTS.md / .cursor/rules/bi
 - No branch off main without user confirmation
 - Never Done without all criteria + test plan executed
 - Never invent file contents — say missing, offer to create
-- Only requested changes · Responses: precise, no filler
+- Only requested changes
+- Responses: status bar + answer only. No preamble. No "here's what I did". No closing summary.
 - Every response starts with: `📋 LOG ✅ | 🗂 [+N/—] | 🌿 [branch] | ✅ [N left/—]`
