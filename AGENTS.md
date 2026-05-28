@@ -2,73 +2,29 @@
 
 `docs/dev/` · Language: mirror user's.
 
-**Mode A (RESUME):** "donde quedamos" / "where did we leave off" / "resume" / "continuemos" / "qué sigue" / "catch me up" → Resume Protocol  
-**Mode B (WORK):** anything else → run all applicable phases, then respond
+**Mode A (RESUME):** "donde quedamos" / "resume" / "catch me up" / "continuemos" / "qué sigue" / "where did we leave off"
+- **Action:** Read `LOGBOOK.md` (last 3) → `FEATURE_PLAN_[branch].md` → `TASKS_[feature].md` → `IDEAS_BACKLOG.md`. MODE A is strictly read-only.
+- **Output (no verbatim copy, synthesize):**
+  ```
+  🔁 [date] · [branch] · [Planning/In Progress/In Review/Done]
+  [2–3 sentences]
+  ▶ TASK-[N]: [desc] · accept: [criterion] · test: Y/N
+    next: TASK-[N+1] · TASK-[N+2]
+  backlog: [N] · top: [High item or —]
+  git checkout [branch] — ¿Continuamos con TASK-[N]?
+  ```
 
----
-
-## Resume Protocol
-
-Read: `LOGBOOK.md` (last 3) → `FEATURE_PLAN_[branch].md` (if ≠ main) → `TASKS_[feature].md` → `IDEAS_BACKLOG.md`
-
-Output (synthesize — no verbatim copy):
-```
-🔁 [date] · [branch] · [Planning/In Progress/In Review/Done]
-[2–3 sentences]
-▶ TASK-[N]: [desc] · accept: [criterion] · test: Y/N
-  next: TASK-[N+1] · TASK-[N+2]
-backlog: [N] · top: [High item or —]
-git checkout [branch] — ¿Continuamos con TASK-[N]?
-```
-
----
-
-## Active Phases
-
-**P1 — LOGBOOK · every Mode B prompt only, never on Mode A**  
-Append to `LOGBOOK.md`:
-```
-## [YYYY-MM-DD HH:MM] — [action]
-done: … | files: … | branch: … | blocker: … | next: …
-```
-
-**P2 — BACKLOG · new idea/bug/feature emerged**  
-Append to `IDEAS_BACKLOG.md`:
-```
-- [ ] F-[N] [Name] — [desc] | [High/Med/Low] | deps: [F-ID or —]
-```
-
-**P3 — FEATURE PLAN**  
-Triggers: "start/empezar feature" · "trabajar en" · "nueva feature" · F-ID ref  
-Create/update `FEATURE_PLAN_[NAME].md` with fields:  
-`Feature · Branch · Status · Goal · Approach · Architecture · Acceptance criteria (binary) · Test plan (unit/integration/manual) · Risks · Sessions`  
-Output: `git checkout -b feature/[name]` **← ▶ run before writing code**
-
-**P4 — TASKS**  
-Trigger: active feature plan exists  
-Create/update `TASKS_[NAME].md`:
-```
-## [ ] TASK-[N]: [verb] [target]
-   accept: […] | branch: feature/[…] | test: [unit/int/manual/no]
-```
-≤2h · binary · dependency-ordered · done → `[x]` · all done → Status: In Review, run test plan
-
----
-
-## Bootstrap
-Trigger: "inicializar bitacora" / "setup bitacora" / `docs/dev/` missing  
-Create `docs/dev/LOGBOOK.md` + `docs/dev/IDEAS_BACKLOG.md`  
-Ask: "¿Qué agentes usás? Puedo crear GEMINI.md / AGENTS.md / .cursor/rules/bitacora.mdc / .github/copilot-instructions.md / .windsurfrules"
-
----
+**Mode B (WORK):** anything else. Run all active phases, then respond.
+- **P1 (Logbook):** ONLY if the prompt modified files (skip query-only prompts). Append to `LOGBOOK.md`:
+  `## [YYYY-MM-DD HH:MM] — [action] | done: … | files: … | branch: … | blocker: … | next: …`
+- **P2 (Backlog):** On new idea/bug, append to `IDEAS_BACKLOG.md`: `- [ ] F-[N] [Name] — [desc] | [High/Med/Low] | deps: [F-ID/—]`
+- **P3 (Feature Plan):** On "start feature" or F-ID ref, create/update `FEATURE_PLAN_[NAME].md` with fields: `Feature · Branch · Status · Goal · Approach · Architecture · Acceptance criteria · Test plan · Risks · Sessions`. Run `git checkout -b feature/[name]` before coding.
+- **P4 (Tasks):** If feature active, update `TASKS_[NAME].md`: `## [ ] TASK-[N]: [verb] [target] | accept: […] | branch: feature/[…] | test: [unit/int/manual/no]`. Tasks ≤2h, binary. All done → Status: In Review, run test plan.
+- **Bootstrap:** If `docs/dev/` missing, create `LOGBOOK.md` + `IDEAS_BACKLOG.md`. Ask: "¿Qué agentes usás?" to suggest config files.
 
 ## Rules
-- P1 on every Mode B prompt only (never on Mode A)
-- MODE A is strictly read-only. No file writes. No git commands. No commits.
-- Always run `git add` and `git commit` after updating the bitacora (`docs/dev/`)
-- No branch off main without user confirmation
-- Never Done without all criteria + test plan executed
-- Never invent file contents — say missing, offer to create
-- Only requested changes
-- Responses: status bar + answer only. No preamble. No "here's what I did". No closing summary.
+- Always run `git add` and `git commit` after updating `docs/dev/`.
+- No branch off main without user confirmation. Never Done without all criteria + test plan executed.
+- Never invent file contents — say missing, offer to create. Only requested changes.
 - Every response starts with: `📋 LOG ✅ | 🗂 [+N/—] | 🌿 [branch] | ✅ [N left/—]`
+- Status bar + answer only. No preamble, no "here's what I did", no closing summary.

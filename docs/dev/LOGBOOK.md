@@ -1,5 +1,10 @@
 # LOGBOOK — bitacora
 
+## 2026-05-28 12:28 — Simplificación de reglas y documentación de la bitácora
+done: Simplificados todos los archivos de reglas (GEMINI.md, AGENTS.md, CLAUDE.md, SKILL.md, .windsurfrules, .cursor/rules/bitacora.mdc) siguiendo las mejoras propuestas por el usuario para reducir el consumo de contexto y hacer las instrucciones más directas | files: GEMINI.md, AGENTS.md, CLAUDE.md, SKILL.md, .windsurfrules, .cursor/rules/bitacora.mdc, docs/dev/LOGBOOK.md | branch: dev | blocker: ninguno | next: esperar instrucciones del usuario
+
+---
+
 ## 2026-05-27 16:36 — Merge de dev a main y push
 done: fusionada la rama dev en main y pusheados los cambios a GitHub | files: docs/dev/LOGBOOK.md | branch: main | blocker: ninguno | next: esperar instrucciones del usuario
 
