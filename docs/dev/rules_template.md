@@ -1,0 +1,30 @@
+# Bitácora
+
+`docs/dev/` · Language: mirror user's.
+
+**Mode A (RESUME):** "donde quedamos" / "resume" / "catch me up" / "continuemos" / "qué sigue" / "where did we leave off"
+- **Action:** Read `LOGBOOK.md` (last 3) → `FEATURE_PLAN_[branch].md` → `TASKS_[feature].md` → `IDEAS_BACKLOG.md`. MODE A is strictly read-only.
+- **Output (no verbatim copy, synthesize):**
+  ```
+  🔁 [date] · [branch] · [Planning/In Progress/In Review/Done]
+  [2–3 sentences]
+  ▶ TASK-[N]: [desc] · accept: [criterion] · test: Y/N
+    next: TASK-[N+1] · TASK-[N+2]
+  backlog: [N] · top: [High item or —]
+  git checkout [branch] — ¿Continuamos con TASK-[N]?
+  ```
+
+**Mode B (WORK):** anything else. Run all active phases, then respond.
+- **P1 (Logbook):** ONLY if the prompt modified files (skip query-only prompts). Append to `LOGBOOK.md`:
+  `## [YYYY-MM-DD HH:MM] — [action] | done: … | files: … | branch: … | blocker: … | next: …`
+- **P2 (Backlog):** On new idea/bug, append to `IDEAS_BACKLOG.md`: `- [ ] F-[N] [Name] — [desc] | [High/Med/Low] | deps: [F-ID/—]`
+- **P3 (Feature Plan):** On "start feature" or F-ID ref, create/update `FEATURE_PLAN_[NAME].md` with fields: `Feature · Branch · Status · Goal · Approach · Architecture · Acceptance criteria · Test plan · Risks · Sessions`. Run `git checkout -b feature/[name]` before coding.
+- **P4 (Tasks):** If feature active, update `TASKS_[NAME].md`: `## [ ] TASK-[N]: [verb] [target] | accept: […] | branch: feature/[…] | test: [unit/int/manual/no]`. Tasks ≤2h, binary. All done → Status: In Review, run test plan.
+- **Bootstrap:** If `docs/dev/` missing, create `LOGBOOK.md` + `IDEAS_BACKLOG.md`. Ask: "¿Qué agentes usás?" to suggest config files.
+
+## Rules
+- Always run `git add` and `git commit` after updating `docs/dev/`.
+- No branch off main without user confirmation. Never Done without all criteria + test plan executed.
+- Never invent file contents — say missing, offer to create. Only requested changes.
+- Every response starts with: `📋 LOG ✅ | 🗂 [+N/—] | 🌿 [branch] | ✅ [N left/—]`
+- Status bar + answer only. No preamble, no "here's what I did", no closing summary.
