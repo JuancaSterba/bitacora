@@ -1,5 +1,10 @@
 # LOGBOOK — bitacora
 
+## 2026-05-29 15:20 — Implementación de sincronización automatizada de reglas
+done: creada la plantilla de reglas centralizada y el script de sincronización en Node.js, configurado package.json, y regenerados todos los archivos de distribución (CLAUDE.md, GEMINI.md, AGENTS.md, SKILL.md, .windsurfrules, .cursor/rules/bitacora.mdc) de manera automática | files: docs/dev/FEATURE_PLAN_sync_rules.md, docs/dev/TASKS_sync_rules.md, docs/dev/rules_template.md, scripts/sync-rules.js, package.json, AGENTS.md, CLAUDE.md, GEMINI.md, SKILL.md, .windsurfrules, .cursor/rules/bitacora.mdc | branch: feature/sync-rules | blocker: ninguno | next: mergear la feature branch a dev y luego a main
+
+---
+
 ## 2026-05-28 12:31 — Merge de dev a main y push
 done: fusionada la rama dev en main con la simplificación de reglas y archivos de configuración completada, y realizado el push a GitHub | files: docs/dev/LOGBOOK.md | branch: main | blocker: ninguno | next: esperar instrucciones del usuario
 

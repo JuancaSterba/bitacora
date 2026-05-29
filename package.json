@@ -1,0 +1,20 @@
+{
+  "name": "bitacora",
+  "version": "1.1.0",
+  "description": "Living documentation agent skill for AI coding assistants",
+  "private": true,
+  "scripts": {
+    "sync": "node scripts/sync-rules.js"
+  },
+  "keywords": [
+    "agents",
+    "documentation",
+    "logbook",
+    "skills",
+    "claude",
+    "gemini",
+    "cursor"
+  ],
+  "author": "JuancaSterba",
+  "license": "MIT"
+}
