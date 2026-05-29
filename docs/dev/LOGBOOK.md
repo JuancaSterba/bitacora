@@ -1,5 +1,10 @@
 # LOGBOOK — bitacora
 
+## 2026-05-29 15:35 — Actualización del README con sección de contribución
+done: añadida sección al README.md que explica el flujo de desarrollo SSOT y el comando npm run sync para compilar reglas | files: README.md, docs/dev/LOGBOOK.md | branch: dev | blocker: ninguno | next: esperar instrucciones del usuario
+
+---
+
 ## 2026-05-29 15:30 — Corrección de versión a v1.2.0 y push final
 done: corregida la versión del release a v1.2.0 en package.json (dado que la versión anterior era v1.1.0), regenerado el build de reglas, y realizado el push de dev y main a GitHub | files: package.json, docs/dev/LOGBOOK.md | branch: dev | blocker: ninguno | next: esperar instrucciones del usuario
 
