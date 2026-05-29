@@ -1,6 +1,6 @@
 {
   "name": "bitacora",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Living documentation agent skill for AI coding assistants",
   "private": true,
   "scripts": {
