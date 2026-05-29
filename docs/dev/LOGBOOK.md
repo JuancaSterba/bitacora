@@ -1,5 +1,10 @@
 # LOGBOOK — bitacora
 
+## 2026-05-29 15:30 — Corrección de versión a v1.2.0 y push final
+done: corregida la versión del release a v1.2.0 en package.json (dado que la versión anterior era v1.1.0), regenerado el build de reglas, y realizado el push de dev y main a GitHub | files: package.json, docs/dev/LOGBOOK.md | branch: dev | blocker: ninguno | next: esperar instrucciones del usuario
+
+---
+
 ## 2026-05-29 15:22 — Merge de feature/sync-rules a dev y a main
 done: fusionada la feature de sincronización automatizada de reglas en la rama dev y posteriormente en main, y borrada la rama de feature local | files: docs/dev/LOGBOOK.md | branch: dev | blocker: ninguno | next: esperar instrucciones del usuario
 
